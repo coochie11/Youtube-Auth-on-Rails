@@ -5,9 +5,13 @@ Rails.application.routes.draw do
 
   resources :registrations, only: [:create]
 
-  delete :logout, to: "session#logout"
+  resources :favorites, only: [:create]
+
+  get '/favorites/dashboard', to: "favorites#dashboard"
+
+  delete :logout, to: "sessions#logout"
   
-  get :logged_in, to: "session#logged_in"
+  get :logged_in, to: "sessions#logged_in"
 
   root to: "static#home"
 end
